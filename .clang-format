@@ -1,0 +1,81 @@
+# =============================================
+# ClangFormat 配置文件
+# 基于 Google 风格，适配嵌入式/C 项目习惯
+# =============================================
+
+Language: Cpp
+BasedOnStyle: Google
+
+# ---------- 缩进 ----------
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+IndentCaseLabels: true
+IndentCaseBlocks: false
+NamespaceIndentation: None
+IndentPPDirectives: None
+IndentWrappedFunctionNames: false
+
+# ---------- 大括号 ----------
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterStruct: true
+  AfterEnum: true
+  AfterUnion: true
+  AfterClass: true
+  AfterControlStatement: false
+  AfterNamespace: false
+  BeforeElse: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+
+# ---------- 列宽与换行 ----------
+ColumnLimit: 120
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackParameters: true
+BinPackArguments: true
+
+# ---------- 对齐 ----------
+AlignConsecutiveMacros: Consecutive
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: true
+AlignOperands: Align
+AlignAfterOpenBracket: Align
+AlignEscapedNewlines: Left
+
+# ---------- 空格 ----------
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInCStyleCastParentheses: false
+SpacesBeforeTrailingComments: 2
+
+# ---------- 指针与引用 ----------
+PointerAlignment: Right
+DerivePointerAlignment: false
+
+# ---------- include 排序 ----------
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
+
+# ---------- 其他 ----------
+ReflowComments: true
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+InsertBraces: false
+RemoveSemicolon: false
