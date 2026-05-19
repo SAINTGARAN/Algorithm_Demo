@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 4.2)
 project(algorithm C)
 
 set(CMAKE_C_STANDARD 11)
@@ -7,6 +7,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/utils
         ${CMAKE_SOURCE_DIR}/src/stack
         ${CMAKE_SOURCE_DIR}/src/tree
+        ${CMAKE_SOURCE_DIR}/src/tree_dp         # 补上
         ${CMAKE_SOURCE_DIR}/src/list
         ${CMAKE_SOURCE_DIR}/src/HashMap
         ${CMAKE_SOURCE_DIR}/datastruct/queue
@@ -24,9 +25,10 @@ file(GLOB UTILS_SOURCES "${CMAKE_SOURCE_DIR}/utils/*.c")
 file(GLOB LIST_SOURCES "${CMAKE_SOURCE_DIR}/src/list/*.c")
 file(GLOB GRAPH_SOURCES "${CMAKE_SOURCE_DIR}/src/graph/*.c")
 file(GLOB HASHMAP_SOURCES "${CMAKE_SOURCE_DIR}/src/HashMap/*.c")
-file(GLOB HASHMAP_SOURCES "${CMAKE_SOURCE_DIR}/src/heap/*.c")
-file(GLOB HASHMAP_SOURCES "${CMAKE_SOURCE_DIR}/src/algorithm/*.c")
-file(GLOB HASHMAP_SOURCES "${CMAKE_SOURCE_DIR}/src/Greedy_Algorithm/*.c")
+file(GLOB HEAP_SOURCES "${CMAKE_SOURCE_DIR}/src/heap/*.c")
+file(GLOB ALGORITHM_SOURCES "${CMAKE_SOURCE_DIR}/src/algorithm/*.c")
+file(GLOB GREED_SOURCES "${CMAKE_SOURCE_DIR}/src/Greedy_Algorithm/*.c")
+file(GLOB TREEDP_SOURCES "${CMAKE_SOURCE_DIR}/src/tree_dp/*.c")
 file(GLOB QUEUE_SOURCES "${CMAKE_SOURCE_DIR}/datastruct/queue/*.c")
 
 add_library(common STATIC
@@ -36,6 +38,10 @@ add_library(common STATIC
         ${GRAPH_SOURCES}
         ${HASHMAP_SOURCES}
         ${QUEUE_SOURCES}
+        ${HEAP_SOURCES}
+        ${ALGORITHM_SOURCES}
+        ${GREED_SOURCES}
+        ${TREEDP_SOURCES}
 )
 
 # ============================================================
@@ -52,11 +58,13 @@ foreach (source_file ${ALGO_SOURCES})
 
     string(FIND ${source_file} "/stack/" IN_STACK)
     string(FIND ${source_file} "/utils/" IN_UTILS)
-    string(FIND ${source_file} "/list/" IN_LIST_DIR)   # 改这里
+    string(FIND ${source_file} "/list/" IN_LIST_DIR)
     string(FIND ${source_file} "/HashMap/" IN_HASHMAP)
     string(FIND ${source_file} "/queue/" IN_QUEUE)
     string(FIND ${source_file} "/heap/" IN_HEAP)
+    string(FIND ${source_file} "/graph/" IN_GRAPH)       # 补上
     string(FIND ${source_file} "/Greedy_Algorithm/" IN_GREEDY)
+    string(FIND ${source_file} "/tree_dp/" IN_TREEDP)
     string(FIND ${source_file} "/algorithm/" IN_ALGORITHM)
 
     if (NOT IN_STACK EQUAL -1)
@@ -65,7 +73,7 @@ foreach (source_file ${ALGO_SOURCES})
     if (NOT IN_UTILS EQUAL -1)
         continue()
     endif ()
-    if (NOT IN_LIST_DIR EQUAL -1)                         # 改这里
+    if (NOT IN_LIST_DIR EQUAL -1)
         continue()
     endif ()
     if (NOT IN_HASHMAP EQUAL -1)
@@ -74,10 +82,16 @@ foreach (source_file ${ALGO_SOURCES})
     if (NOT IN_QUEUE EQUAL -1)
         continue()
     endif ()
+    if (NOT IN_HEAP EQUAL -1)
+        continue()
+    endif ()
+    if (NOT IN_GRAPH EQUAL -1)
+        continue()
+    endif ()
     if (NOT IN_GREEDY EQUAL -1)
         continue()
     endif ()
-    if (NOT IN_HEAP EQUAL -1)
+    if (NOT IN_TREEDP EQUAL -1)
         continue()
     endif ()
     if (NOT IN_ALGORITHM EQUAL -1)
